@@ -7,15 +7,16 @@ namespace ConsoleApp8
         static void Main(string[] args)
         {
             var parenteses = new string[] { "{}", "[]", "()" };
-            //var parenteses_input = "{[()]}";
+            var parenteses_input = "{[()]}";
             //var parenteses_input = "{}[()]";
             //var parenteses_input = "{}[]()";
             //var parenteses_input = "{}[]";
-            var parenteses_input = "{}";
+            //var parenteses_input = "{}";
             char[] parenteses_array = parenteses_input.ToCharArray();
             var n = parenteses_array.Length / 2;
             var array_blocked = new string[n];
             var cont_array_true = 0;
+            var str_array = "";
 
             var cont = 0;
             for (int i = 0; i < parenteses_array.Length; i++)
@@ -34,14 +35,15 @@ namespace ConsoleApp8
 
             for (int i = 0; i < array_blocked.Length; i++)
             {
+                str_array += array_blocked[i];
+                Console.WriteLine(str_array);
+
                 for (int j = 0; j < parenteses.Length; j++)
                 {
-                    if (array_blocked[i] == parenteses[j]) { 
-                    
+                    if (array_blocked[i] == parenteses[j])
+                    {
                         cont_array_true = cont_array_true + 1;
-                    }
-
-                    else Console.WriteLine(false);
+                    }                          
                 }
             }
 
