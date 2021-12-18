@@ -19,15 +19,14 @@ namespace ConsoleApp8
 
         public static bool Is_Blockeds(string parenteses_input)
         {
-
             var parenteses = new string[] { "{}", "[]", "()" };
             char[] parenteses_array = parenteses_input.ToCharArray();
             var n = parenteses_array.Length / 2;
             var array_blocked = new string[n];
             var count_parenteses = parenteses.Length;
             var temp_array = array_blocked;
-
             var cont = 0;
+
             for (int i = 0; i < parenteses_array.Length; i++)
             {
                 if ((i % 2) == 0)
