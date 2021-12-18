@@ -15,8 +15,7 @@ namespace ConsoleApp8
 
             var isblocked = Is_Blockeds(parenteses_input);
 
-            Console.WriteLine(Is_Blockeds);
-
+            Console.WriteLine(isblocked);
         }
 
         public static bool Is_Blockeds(string parenteses_input)
