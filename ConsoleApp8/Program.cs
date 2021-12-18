@@ -13,7 +13,9 @@ namespace ConsoleApp8
             //var parenteses_input = "{]";
             var parenteses_input = "{}(}[)";
 
-            Is_Blockeds(parenteses_input);
+            var isblocked = Is_Blockeds(parenteses_input);
+
+            Console.WriteLine(Is_Blockeds);
 
         }
 
@@ -61,18 +63,18 @@ namespace ConsoleApp8
             if (removeIndex >= 0)
             {
                 string[] newStrItems = new string[array.Length - 1];
-                
+
                 for (int i = 0, j = 0; i < newStrItems.Length; i++, j++)
                 {
-                   
+
                     if (i == removeIndex)
-                    
+
                         j++;
-                    
+
                     newStrItems[i] = array[j];
                 }
 
-              
+
                 return newStrItems;
             };
 
