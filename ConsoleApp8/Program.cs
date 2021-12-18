@@ -6,9 +6,16 @@ namespace ConsoleApp8
     {
         static void Main(string[] args)
         {
-            var parenteses = new string[] { "{}", "[]", "()" };
             var parenteses_input = "{[()]}";
-            //var parenteses_input = "{}[()]";
+            Blockeds(parenteses_input);
+            OpenCloseArray();
+        }
+
+        public static void Blockeds(string parenteses_input) {
+
+            var parenteses = new string[] { "{}", "[]", "()" };
+           
+            //var parenteses_input = "[]{}{]";
             //var parenteses_input = "{}[]()";
             //var parenteses_input = "{}[]";
             //var parenteses_input = "{}";
@@ -16,7 +23,8 @@ namespace ConsoleApp8
             var n = parenteses_array.Length / 2;
             var array_blocked = new string[n];
             var cont_array_true = 0;
-            var str_array = "";
+            var str_array = array_blocked;
+
 
             var cont = 0;
             for (int i = 0; i < parenteses_array.Length; i++)
@@ -33,20 +41,19 @@ namespace ConsoleApp8
             }
 
 
-            for (int i = 0; i < array_blocked.Length; i++)
+            for (int i = 0; i < parenteses.Length; i++)
             {
-                str_array += array_blocked[i];
-                Console.WriteLine(str_array);
-
-                for (int j = 0; j < parenteses.Length; j++)
+                for (int j = 0; j < array_blocked.Length; j++)
                 {
-                    if (array_blocked[i] == parenteses[j])
+                    if (array_blocked[j] == parenteses[i])
                     {
+
+                        str_array = RemoveItemArray(str_array, array_blocked[i]);
+
                         cont_array_true = cont_array_true + 1;
-                    }                          
+                    }
                 }
             }
-
         }
 
         public static void OpenCloseArray()
@@ -103,6 +110,40 @@ namespace ConsoleApp8
 
             Console.WriteLine((n / 2) == cont_array_true ? true : false);
 
+        }
+
+        public static string[] RemoveItemArray(string[] array, string indice)
+        {
+
+            int removeIndex = Array.IndexOf(array, indice);
+
+            if (removeIndex >= 0)
+            {
+                // declare and define a new array one element shorter than the old array
+                string[] newStrItems = new string[array.Length - 1];
+
+                // loop from 0 to the length of the new array, with i being the position
+                // in the new array, and j being the position in the old array
+                for (int i = 0, j = 0; i < newStrItems.Length; i++, j++)
+                {
+                    // if the index equals the one we want to remove, bump
+                    // j up by one to "skip" the value in the original array
+                    if (i == removeIndex)
+                    {
+                        j++;
+                    }
+
+                    // assign the good element from the original array to the
+                    // new array at the appropriate position
+                    newStrItems[i] = array[j];
+                }
+
+                // overwrite the old array with the new one
+                return newStrItems;
+            };
+
+
+            return new string[] { };
         }
     }
 }
